@@ -8,7 +8,7 @@ import yaml
 
 class SAM2:
 
-    def __init__(self, video_dir = "output_images"):
+    def __init__(self, video_dir = "resource/output_images"):
         # self.batch_size = batch_size
         self.color = [
             (0, 255, 0),      # 绿色
@@ -77,7 +77,7 @@ class SAM2:
             if torch.cuda.get_device_properties(1).major >= 8:
                 torch.backends.cuda.matmul.allow_tf32 = True
                 torch.backends.cudnn.allow_tf32 = True
-        self.sam2_checkpoint = "SAM2/sam2.1_hiera_large.pt"
+        self.sam2_checkpoint = "resource/sam2.1_hiera_large.pt"
         self.model_cfg = "configs/sam2.1/sam2.1_hiera_l.yaml"
         self.predictor = build_sam2_video_predictor(
             self.model_cfg, self.sam2_checkpoint, device=self.device
@@ -198,7 +198,7 @@ class SAM2:
     def generate_yolo_datas(self, is_continue: bool = True, rate_train: float = 0.8):
         max_frame_id = 0
         
-        output_dir = os.path.join("datasets")
+        output_dir = os.path.join("resource/datasets")
         if not is_continue:
             os.path.exists(output_dir) and os.system("rm -rf datasets")
         else:

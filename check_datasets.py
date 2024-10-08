@@ -47,8 +47,8 @@ def draw_bounding_boxes(image_dir, label_dir, output_dir):
         cv2.imwrite(output_path, image)
 
 # Example usage
-image_directory = 'datasets/images/train'  # Path to the directory containing train images
-label_directory = 'datasets/labels/train'  # Path to the directory containing train labels
-output_directory = 'datasets/visualized/train'  # Path to save the visualized images
+image_directory = 'resource/datasets/images/train'  # Path to the directory containing train images
+label_directory = 'resource/datasets/labels/train'  # Path to the directory containing train labels
+output_directory = 'resource/datasets/visualized/train'  # Path to save the visualized images
 
 draw_bounding_boxes(image_directory, label_directory, output_directory)

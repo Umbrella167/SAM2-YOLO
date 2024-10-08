@@ -10,7 +10,7 @@ def save_frame(frame, file_name, quality):
     if not cv2.imwrite(file_name, frame, [int(cv2.IMWRITE_JPEG_QUALITY), quality]):
         print(f"Error: Failed to write image {file_name}.")
 
-def generate_images(path, start_frame, end_frame, step, quality, size=None, output_dir="output_images"):
+def generate_images(path, start_frame, end_frame, step, quality, size=None, output_dir="resource/output_images"):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 

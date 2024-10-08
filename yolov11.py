@@ -4,8 +4,8 @@ import time
 from ultralytics import YOLO
 
 def train():
-    model = YOLO("yolo11n.pt")  # 加载模型
-    trainer = model.train(data="data.yaml", epochs=45)  # 训练模型
+    model = YOLO("resource/yolo11n.pt")  # 加载模型
+    trainer = model.train(data="resource/data.yaml", epochs=45)  # 训练模型
 
 # 调用训练函数
 
@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # 加载训练好的模型
     model = YOLO("runs/detect/train2/weights/best.pt")  # 请确保路径正确
     # 打开视频文件
-    capture = cv2.VideoCapture('3.mp4')
+    capture = cv2.VideoCapture('resource/3.mp4')
     
     # 获取视频的宽度、高度和帧率
     frame_width = int(capture.get(cv2.CAP_PROP_FRAME_WIDTH))

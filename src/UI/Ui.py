@@ -70,8 +70,8 @@ class UiCallBack:
         )
 
     def rename(self, sender, app_data, user_data):
-        # 把output_images 里的图片从0开始重命名
-        output_dir = "output_images"
+        # 把resource/output_images 里的图片从0开始重命名
+        output_dir = "resource/output_images"
         if not os.path.exists(output_dir):
             print(f"Directory {output_dir} does not exist.")
             return
@@ -85,7 +85,7 @@ class UiCallBack:
 
     def read_images(self):
         dpg.delete_item(item="file_window", children_only=True)
-        output_dir = "output_images"
+        output_dir = "resource/output_images"
         if not os.path.exists(output_dir):
             print(f"Directory {output_dir} does not exist.")
             return
@@ -137,7 +137,7 @@ class UiCallBack:
                     dpg.set_value(item, False)
         sender = dpg.get_item_alias(sender).split("_")[0]
         self.select_image = sender
-        image = cv2.imread(f"output_images/{sender}")
+        image = cv2.imread(f"resource/output_images/{sender}")
         texture = utils.image2texture(image)
         dpg.set_value("raw_texture_select", texture)
         dpg.delete_item("canvas", children_only=True)
@@ -169,7 +169,7 @@ class UiCallBack:
 
         # if not dpg.does_alias_exist(f"{select_image}_image"):
         #     return
-        image = cv2.imread(f"output_images/{select_image}")
+        image = cv2.imread(f"resource/output_images/{select_image}")
         texture = utils.image2texture(image)
         dpg.set_value("raw_texture_select", texture)
 
@@ -214,7 +214,7 @@ class UiCallBack:
 
     def show_predict(self):
         frame_id = int(self.select_image.split(".")[0])
-        frame = cv2.imread(f"output_images/{self.select_image}")
+        frame = cv2.imread(f"resource/output_images/{self.select_image}")
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         out_obj_ids, out_mask_logits = sam2.add_point(
             points=self.points,
